@@ -45,7 +45,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.label_status = new System.Windows.Forms.Label();
+            this.btn_SerialComCheck = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +82,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.panel2.Controls.Add(this.btn_SerialComCheck);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 24);
             this.panel2.Name = "panel2";
@@ -218,6 +221,17 @@
             this.label_status.Text = "Status";
             this.label_status.Click += new System.EventHandler(this.label3_Click);
             // 
+            // btn_SerialComCheck
+            // 
+            this.btn_SerialComCheck.BackColor = System.Drawing.Color.DarkGray;
+            this.btn_SerialComCheck.Location = new System.Drawing.Point(8, 8);
+            this.btn_SerialComCheck.Name = "btn_SerialComCheck";
+            this.btn_SerialComCheck.Size = new System.Drawing.Size(53, 44);
+            this.btn_SerialComCheck.TabIndex = 13;
+            this.btn_SerialComCheck.Text = "Serial Check";
+            this.btn_SerialComCheck.UseVisualStyleBackColor = false;
+            this.btn_SerialComCheck.Click += new System.EventHandler(this.btn_SerialComCheck_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -230,6 +244,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -254,6 +269,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Label label_status;
+        private System.Windows.Forms.Button btn_SerialComCheck;
     }
 }
 

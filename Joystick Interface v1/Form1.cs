@@ -128,5 +128,10 @@ namespace Joystick_Interface_v1
         {
 
         }
+
+        private void btn_SerialComCheck_Click(object sender, EventArgs e)
+        {
+            serialPort1.Write("ADD360");  //"ADD360" 시리얼통신으로 송신
+        }
     }
 }
