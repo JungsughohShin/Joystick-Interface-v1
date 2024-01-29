@@ -33,6 +33,7 @@
             this.환경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.컨트롤러ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_SerialComCheck = new System.Windows.Forms.Button();
             this.textBox_SerialSend = new System.Windows.Forms.TextBox();
             this.btn_SerialSend = new System.Windows.Forms.Button();
             this.comboBox_Com = new System.Windows.Forms.ComboBox();
@@ -43,9 +44,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Dcnt = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.label_status = new System.Windows.Forms.Label();
-            this.btn_SerialComCheck = new System.Windows.Forms.Button();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.speedometer = new UserSpeedometer.UserControl1();
+            this.btn_SpeedCheck = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -53,7 +55,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
+            this.menuStrip1.BackColor = System.Drawing.Color.Gray;
             this.menuStrip1.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.환경ToolStripMenuItem});
@@ -82,12 +84,24 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.panel2.Controls.Add(this.btn_SpeedCheck);
             this.panel2.Controls.Add(this.btn_SerialComCheck);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 24);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(73, 629);
             this.panel2.TabIndex = 0;
+            // 
+            // btn_SerialComCheck
+            // 
+            this.btn_SerialComCheck.BackColor = System.Drawing.Color.DarkGray;
+            this.btn_SerialComCheck.Location = new System.Drawing.Point(8, 8);
+            this.btn_SerialComCheck.Name = "btn_SerialComCheck";
+            this.btn_SerialComCheck.Size = new System.Drawing.Size(53, 44);
+            this.btn_SerialComCheck.TabIndex = 13;
+            this.btn_SerialComCheck.Text = "Serial Check";
+            this.btn_SerialComCheck.UseVisualStyleBackColor = false;
+            this.btn_SerialComCheck.Click += new System.EventHandler(this.btn_SerialComCheck_Click);
             // 
             // textBox_SerialSend
             // 
@@ -192,6 +206,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.speedometer);
             this.panel1.Controls.Add(this.label_status);
             this.panel1.Controls.Add(this.btn_Dcnt);
             this.panel1.Controls.Add(this.label2);
@@ -221,16 +236,33 @@
             this.label_status.Text = "Status";
             this.label_status.Click += new System.EventHandler(this.label3_Click);
             // 
-            // btn_SerialComCheck
+            // speedometer
             // 
-            this.btn_SerialComCheck.BackColor = System.Drawing.Color.DarkGray;
-            this.btn_SerialComCheck.Location = new System.Drawing.Point(8, 8);
-            this.btn_SerialComCheck.Name = "btn_SerialComCheck";
-            this.btn_SerialComCheck.Size = new System.Drawing.Size(53, 44);
-            this.btn_SerialComCheck.TabIndex = 13;
-            this.btn_SerialComCheck.Text = "Serial Check";
-            this.btn_SerialComCheck.UseVisualStyleBackColor = false;
-            this.btn_SerialComCheck.Click += new System.EventHandler(this.btn_SerialComCheck_Click);
+            this.speedometer.Angle = "0";
+            this.speedometer.Location = new System.Drawing.Point(696, 423);
+            this.speedometer.MeterName = "SPEED";
+            this.speedometer.Name = "speedometer";
+            this.speedometer.Number1 = "0";
+            this.speedometer.Number2 = "5";
+            this.speedometer.Number3 = "10";
+            this.speedometer.Number4 = "15";
+            this.speedometer.Number5 = "20";
+            this.speedometer.Number6 = "25";
+            this.speedometer.Number7 = "30";
+            this.speedometer.Size = new System.Drawing.Size(205, 205);
+            this.speedometer.TabIndex = 13;
+            this.speedometer.Load += new System.EventHandler(this.userControl11_Load);
+            // 
+            // btn_SpeedCheck
+            // 
+            this.btn_SpeedCheck.BackColor = System.Drawing.Color.DarkGray;
+            this.btn_SpeedCheck.Location = new System.Drawing.Point(8, 70);
+            this.btn_SpeedCheck.Name = "btn_SpeedCheck";
+            this.btn_SpeedCheck.Size = new System.Drawing.Size(53, 44);
+            this.btn_SpeedCheck.TabIndex = 14;
+            this.btn_SpeedCheck.Text = "SpeedCheck";
+            this.btn_SpeedCheck.UseVisualStyleBackColor = false;
+            this.btn_SpeedCheck.Click += new System.EventHandler(this.btn_SpeedCheck_Click);
             // 
             // Form1
             // 
@@ -270,6 +302,8 @@
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Label label_status;
         private System.Windows.Forms.Button btn_SerialComCheck;
+        private UserSpeedometer.UserControl1 speedometer;
+        private System.Windows.Forms.Button btn_SpeedCheck;
     }
 }
 

@@ -17,7 +17,7 @@ using System.IO.Ports;
 
 
 namespace Joystick_Interface_v1
-{
+{ 
     public partial class Form1 : Form
     {
         public Form1()
@@ -132,6 +132,17 @@ namespace Joystick_Interface_v1
         private void btn_SerialComCheck_Click(object sender, EventArgs e)
         {
             serialPort1.Write("ADD360");  //"ADD360" 시리얼통신으로 송신
+        }
+        public int nume = 0;
+        private void btn_SpeedCheck_Click(object sender, EventArgs e)
+        {
+            nume = nume + 10;
+            speedometer.Angle=nume.ToString();
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
