@@ -100,8 +100,8 @@
             // 
             // btn_joyStart
             // 
-            this.btn_joyStart.BackColor = System.Drawing.Color.DarkGray;
-            this.btn_joyStart.Location = new System.Drawing.Point(8, 130);
+            this.btn_joyStart.BackColor = System.Drawing.Color.Firebrick;
+            this.btn_joyStart.Location = new System.Drawing.Point(8, 108);
             this.btn_joyStart.Name = "btn_joyStart";
             this.btn_joyStart.Size = new System.Drawing.Size(53, 44);
             this.btn_joyStart.TabIndex = 15;
@@ -112,7 +112,7 @@
             // btn_SpeedCheck
             // 
             this.btn_SpeedCheck.BackColor = System.Drawing.Color.DarkGray;
-            this.btn_SpeedCheck.Location = new System.Drawing.Point(8, 70);
+            this.btn_SpeedCheck.Location = new System.Drawing.Point(8, 58);
             this.btn_SpeedCheck.Name = "btn_SpeedCheck";
             this.btn_SpeedCheck.Size = new System.Drawing.Size(53, 44);
             this.btn_SpeedCheck.TabIndex = 14;
@@ -284,7 +284,7 @@
             // btn_joyStop
             // 
             this.btn_joyStop.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btn_joyStop.Location = new System.Drawing.Point(8, 189);
+            this.btn_joyStop.Location = new System.Drawing.Point(8, 158);
             this.btn_joyStop.Name = "btn_joyStop";
             this.btn_joyStop.Size = new System.Drawing.Size(53, 44);
             this.btn_joyStop.TabIndex = 16;
@@ -295,7 +295,7 @@
             // btn_findCom
             // 
             this.btn_findCom.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_findCom.Location = new System.Drawing.Point(8, 252);
+            this.btn_findCom.Location = new System.Drawing.Point(8, 208);
             this.btn_findCom.Name = "btn_findCom";
             this.btn_findCom.Size = new System.Drawing.Size(53, 44);
             this.btn_findCom.TabIndex = 17;

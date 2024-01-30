@@ -34,11 +34,20 @@ namespace Joystick_Interface_v1
         {
             comboBox_Com.DataSource = SerialPort.GetPortNames(); //연결 가능한 시리얼 포트 이름을 콤보박스에 가져오기
         }
-        private bool joystickDo = false;
+
+        //private bool joystickDo = false;
+        Form2 newform2 = new Form2();
+
 
         private void 컨트롤러ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2 newform2 = new Form2();
+            if (joy != null)
+            {
+                btn_joyStart.BackColor = Color.Firebrick;
+                btn_joyStop.BackColor = Color.MediumSeaGreen;
+                joy.Abort();
+                tryNum = 0;
+            }
             newform2.ShowDialog();
         }
 
@@ -193,6 +202,8 @@ namespace Joystick_Interface_v1
                 // Instantiate the joystick
                 var joystick = new Joystick(directInput, joystickGuid); //조이스틱 객체 선언
 
+                //newform2.showTextBoxLine("Found Joystick/Gamepad with GUID: " + joystickGuid);
+
                 //richTextBox_line.AppendText("Found Joystick/Gamepad with GUID: " + joystickGuid);
                 //richTextBox_line.AppendText("\n");
                 //richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
@@ -202,9 +213,11 @@ namespace Joystick_Interface_v1
 
                 foreach (var effectInfo in allEffects)
                 {
+                    //newform2.showTextBoxLine("Effect available " + effectInfo.Name);
+
                     //richTextBox_line.AppendText("Effect available " + effectInfo.Name);
                     //richTextBox_line.AppendText("\n");
-                    //.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+                    //richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
                 }
                 // Set BufferSize in order to use buffered data.
                 joystick.Properties.BufferSize = 128;
@@ -218,8 +231,8 @@ namespace Joystick_Interface_v1
 
                 //서보모터 2개만 사용
                 int left_Y = 0; //모터 세기 (0~32768) >> ( 0~32)
-                int left_X = -1; //안쓰는 값 
-                int right_Y = -1; //안쓰는 값
+                //int left_X = -1; //안쓰는 값 
+                //int right_Y = -1; //안쓰는 값
                 int right_X = 0;// (-32767 ~ 327678)>> ( -32 ~ 32) (-):좌회전, (+):우회전 
                 int rightBtn_Up = 0; //1일때는 상승 동작, 0일 때는 동작 X
                 int rightBtn_Dn = 0; //1일때는 하강 동작, 0일 때는 동작 X
@@ -253,6 +266,7 @@ namespace Joystick_Interface_v1
 
                     foreach (var state in states)
                     {
+                        //newform2.showTextBoxLine(state.ToString());
                         //richTextBox_line.AppendText(state.ToString());
                         //richTextBox_line.AppendText("\n");
                         //richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
@@ -344,12 +358,13 @@ namespace Joystick_Interface_v1
 
                             speedometer.Angle = speedAngle.ToString();
 
+                            //newform2.showTextBoxCompile(compileStr);
                             //richTextBox_compile.AppendText(compileStr);
                             //richTextBox_compile.AppendText("\n");
                             //richTextBox_compile.ScrollToCaret();//리치텍스트박스 자동 스크롤 
                         }
                         else
-                        {
+                        {   
                             //richTextBox_compile.AppendText("Can't Compile Data");
                             //richTextBox_compile.AppendText("\n");
                             // richTextBox_compile.ScrollToCaret();//리치텍스트박스 자동 스크롤 
@@ -372,16 +387,16 @@ namespace Joystick_Interface_v1
             if (tryNum == 0)
             {
                 btn_joyStart.BackColor = Color.MediumSeaGreen;
-                btn_joyStop.BackColor = Color.DarkGray;
+                btn_joyStop.BackColor = Color.Firebrick;
 
                 joy = new Thread(getJoystick);
                 joy.Name = "Test Thread";
-                joy.IsBackground = true;
+                //joy.IsBackground = true;
                 joy.Start();
 
             }
             else {
-                btn_joyStart.BackColor = Color.DarkGray;
+                btn_joyStart.BackColor = Color.Firebrick;
             }
             tryNum++;
             
@@ -391,10 +406,13 @@ namespace Joystick_Interface_v1
         
         private void btn_joyStop_Click(object sender, EventArgs e)
         {
-            btn_joyStart.BackColor = Color.DarkGray;
-            btn_joyStop.BackColor = Color.MediumSeaGreen;
-            joy.Abort();
-            tryNum = 0;
+            if (joy !=null)
+            {
+                btn_joyStart.BackColor = Color.Firebrick;
+                btn_joyStop.BackColor = Color.MediumSeaGreen;
+                joy.Abort();
+                tryNum = 0;
+            }
         }
 
         private void btn_findCom_Click(object sender, EventArgs e)
