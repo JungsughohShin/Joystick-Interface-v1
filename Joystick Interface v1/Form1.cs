@@ -1,4 +1,5 @@
 ﻿using System;
+using SharpDX.DirectInput;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,8 @@ using System.IO.Ports;
 //https://ggaebap.tistory.com/56
 //richTextBox 자동스크롤 Focus 내용
 //https://ssscool.tistory.com/13
+//폼간의 데이터 통신
+//https://dream-hacker.tistory.com/55
 
 
 namespace Joystick_Interface_v1
@@ -32,7 +35,8 @@ namespace Joystick_Interface_v1
 
         private void 컨트롤러ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form2 newform2 = new Form2();
+            newform2.ShowDialog();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -136,7 +140,7 @@ namespace Joystick_Interface_v1
         public int nume = 0;
         private void btn_SpeedCheck_Click(object sender, EventArgs e)
         {
-            nume = nume + 10;
+            nume = nume - 10;
             speedometer.Angle=nume.ToString();
         }
 

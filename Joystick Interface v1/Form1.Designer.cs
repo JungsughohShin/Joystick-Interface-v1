@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.환경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.컨트롤러ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_ControlCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_SpeedCheck = new System.Windows.Forms.Button();
             this.btn_SerialComCheck = new System.Windows.Forms.Button();
             this.textBox_SerialSend = new System.Windows.Forms.TextBox();
             this.btn_SerialSend = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.label_status = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.speedometer = new UserSpeedometer.UserControl1();
-            this.btn_SpeedCheck = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -69,17 +69,17 @@
             // 환경ToolStripMenuItem
             // 
             this.환경ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.컨트롤러ToolStripMenuItem});
+            this.menu_ControlCheck});
             this.환경ToolStripMenuItem.Name = "환경ToolStripMenuItem";
             this.환경ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.환경ToolStripMenuItem.Text = "환경";
             // 
-            // 컨트롤러ToolStripMenuItem
+            // menu_ControlCheck
             // 
-            this.컨트롤러ToolStripMenuItem.Name = "컨트롤러ToolStripMenuItem";
-            this.컨트롤러ToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.컨트롤러ToolStripMenuItem.Text = "컨트롤러 확인";
-            this.컨트롤러ToolStripMenuItem.Click += new System.EventHandler(this.컨트롤러ToolStripMenuItem_Click);
+            this.menu_ControlCheck.Name = "menu_ControlCheck";
+            this.menu_ControlCheck.Size = new System.Drawing.Size(150, 22);
+            this.menu_ControlCheck.Text = "컨트롤러 확인";
+            this.menu_ControlCheck.Click += new System.EventHandler(this.컨트롤러ToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -91,6 +91,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(73, 629);
             this.panel2.TabIndex = 0;
+            // 
+            // btn_SpeedCheck
+            // 
+            this.btn_SpeedCheck.BackColor = System.Drawing.Color.DarkGray;
+            this.btn_SpeedCheck.Location = new System.Drawing.Point(8, 70);
+            this.btn_SpeedCheck.Name = "btn_SpeedCheck";
+            this.btn_SpeedCheck.Size = new System.Drawing.Size(53, 44);
+            this.btn_SpeedCheck.TabIndex = 14;
+            this.btn_SpeedCheck.Text = "SpeedCheck";
+            this.btn_SpeedCheck.UseVisualStyleBackColor = false;
+            this.btn_SpeedCheck.Click += new System.EventHandler(this.btn_SpeedCheck_Click);
             // 
             // btn_SerialComCheck
             // 
@@ -239,7 +250,7 @@
             // speedometer
             // 
             this.speedometer.Angle = "0";
-            this.speedometer.Location = new System.Drawing.Point(696, 423);
+            this.speedometer.Location = new System.Drawing.Point(701, 436);
             this.speedometer.MeterName = "SPEED";
             this.speedometer.Name = "speedometer";
             this.speedometer.Number1 = "0";
@@ -252,17 +263,6 @@
             this.speedometer.Size = new System.Drawing.Size(205, 205);
             this.speedometer.TabIndex = 13;
             this.speedometer.Load += new System.EventHandler(this.userControl11_Load);
-            // 
-            // btn_SpeedCheck
-            // 
-            this.btn_SpeedCheck.BackColor = System.Drawing.Color.DarkGray;
-            this.btn_SpeedCheck.Location = new System.Drawing.Point(8, 70);
-            this.btn_SpeedCheck.Name = "btn_SpeedCheck";
-            this.btn_SpeedCheck.Size = new System.Drawing.Size(53, 44);
-            this.btn_SpeedCheck.TabIndex = 14;
-            this.btn_SpeedCheck.Text = "SpeedCheck";
-            this.btn_SpeedCheck.UseVisualStyleBackColor = false;
-            this.btn_SpeedCheck.Click += new System.EventHandler(this.btn_SpeedCheck_Click);
             // 
             // Form1
             // 
@@ -287,7 +287,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 환경ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 컨트롤러ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_ControlCheck;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox_SerialSend;
         private System.Windows.Forms.Button btn_SerialSend;
