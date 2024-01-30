@@ -40,7 +40,7 @@ namespace Joystick_Interface_v1
 
         //private bool joystickDo = false;
         Form2 newform2 = new Form2();
-
+        
 
         private void 컨트롤러ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -421,6 +421,12 @@ namespace Joystick_Interface_v1
         private void btn_findCom_Click(object sender, EventArgs e)
         {
             comboBox_Com.DataSource = SerialPort.GetPortNames(); //연결 가능한 시리얼 포트 이름을 콤보박스에 가져오기
+        }
+
+        private void fuelMeter1_Load(object sender, EventArgs e)
+        {
+            fuelMeter1.Angle = 85.ToString(); // 대충 넣은 값
+
         }
     }
 }

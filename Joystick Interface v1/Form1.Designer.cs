@@ -33,6 +33,8 @@
             this.환경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_ControlCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_findCom = new System.Windows.Forms.Button();
+            this.btn_joyStop = new System.Windows.Forms.Button();
             this.btn_joyStart = new System.Windows.Forms.Button();
             this.btn_SpeedCheck = new System.Windows.Forms.Button();
             this.btn_SerialComCheck = new System.Windows.Forms.Button();
@@ -49,8 +51,7 @@
             this.speedometer = new UserSpeedometer.UserControl1();
             this.label_status = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.btn_joyStop = new System.Windows.Forms.Button();
-            this.btn_findCom = new System.Windows.Forms.Button();
+            this.fuelMeter1 = new fuelMeter.fuelMeter();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -97,6 +98,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(73, 629);
             this.panel2.TabIndex = 0;
+            // 
+            // btn_findCom
+            // 
+            this.btn_findCom.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_findCom.Location = new System.Drawing.Point(8, 208);
+            this.btn_findCom.Name = "btn_findCom";
+            this.btn_findCom.Size = new System.Drawing.Size(53, 44);
+            this.btn_findCom.TabIndex = 17;
+            this.btn_findCom.Text = "Find COM";
+            this.btn_findCom.UseVisualStyleBackColor = false;
+            this.btn_findCom.Click += new System.EventHandler(this.btn_findCom_Click);
+            // 
+            // btn_joyStop
+            // 
+            this.btn_joyStop.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_joyStop.Location = new System.Drawing.Point(8, 158);
+            this.btn_joyStop.Name = "btn_joyStop";
+            this.btn_joyStop.Size = new System.Drawing.Size(53, 44);
+            this.btn_joyStop.TabIndex = 16;
+            this.btn_joyStop.Text = "Joy   Stop";
+            this.btn_joyStop.UseVisualStyleBackColor = false;
+            this.btn_joyStop.Click += new System.EventHandler(this.btn_joyStop_Click);
             // 
             // btn_joyStart
             // 
@@ -234,6 +257,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.fuelMeter1);
             this.panel1.Controls.Add(this.speedometer);
             this.panel1.Controls.Add(this.label_status);
             this.panel1.Controls.Add(this.btn_Dcnt);
@@ -257,7 +281,7 @@
             // speedometer
             // 
             this.speedometer.Angle = "0";
-            this.speedometer.Location = new System.Drawing.Point(701, 436);
+            this.speedometer.Location = new System.Drawing.Point(852, 232);
             this.speedometer.MeterName = "SPEED";
             this.speedometer.Name = "speedometer";
             this.speedometer.Number1 = "0";
@@ -281,27 +305,18 @@
             this.label_status.Text = "Status";
             this.label_status.Click += new System.EventHandler(this.label3_Click);
             // 
-            // btn_joyStop
+            // fuelMeter1
             // 
-            this.btn_joyStop.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btn_joyStop.Location = new System.Drawing.Point(8, 158);
-            this.btn_joyStop.Name = "btn_joyStop";
-            this.btn_joyStop.Size = new System.Drawing.Size(53, 44);
-            this.btn_joyStop.TabIndex = 16;
-            this.btn_joyStop.Text = "Joy   Stop";
-            this.btn_joyStop.UseVisualStyleBackColor = false;
-            this.btn_joyStop.Click += new System.EventHandler(this.btn_joyStop_Click);
-            // 
-            // btn_findCom
-            // 
-            this.btn_findCom.BackColor = System.Drawing.Color.DarkCyan;
-            this.btn_findCom.Location = new System.Drawing.Point(8, 208);
-            this.btn_findCom.Name = "btn_findCom";
-            this.btn_findCom.Size = new System.Drawing.Size(53, 44);
-            this.btn_findCom.TabIndex = 17;
-            this.btn_findCom.Text = "Find COM";
-            this.btn_findCom.UseVisualStyleBackColor = false;
-            this.btn_findCom.Click += new System.EventHandler(this.btn_findCom_Click);
+            this.fuelMeter1.Angle = "0";
+            this.fuelMeter1.BackColor = System.Drawing.Color.Transparent;
+            this.fuelMeter1.Location = new System.Drawing.Point(678, 34);
+            this.fuelMeter1.Name = "fuelMeter1";
+            this.fuelMeter1.Number1 = "1";
+            this.fuelMeter1.Number2 = "2";
+            this.fuelMeter1.Number3 = "3";
+            this.fuelMeter1.Size = new System.Drawing.Size(143, 142);
+            this.fuelMeter1.TabIndex = 14;
+            this.fuelMeter1.Load += new System.EventHandler(this.fuelMeter1_Load);
             // 
             // Form1
             // 
@@ -346,6 +361,7 @@
         private System.Windows.Forms.Button btn_joyStart;
         private System.Windows.Forms.Button btn_joyStop;
         private System.Windows.Forms.Button btn_findCom;
+        private fuelMeter.fuelMeter fuelMeter1;
     }
 }
 
