@@ -18,6 +18,9 @@ using System.IO.Ports;
 //https://ssscool.tistory.com/13
 //폼간의 데이터 통신
 //https://dream-hacker.tistory.com/55
+//크로스 스레드
+//https://afsdzvcx123.tistory.com/entry/C-%EC%9C%88%ED%8F%BC-%EC%9C%88%ED%8F%BC-%EC%93%B0%EB%A0%88%EB%93%9CThread-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+
 
 
 namespace Joystick_Interface_v1
@@ -147,7 +150,11 @@ namespace Joystick_Interface_v1
 
         private void btn_SerialComCheck_Click(object sender, EventArgs e)
         {
-            serialPort1.Write("ADD360");  //"ADD360" 시리얼통신으로 송신
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Write("ADD360");  //"ADD360" 시리얼통신으로 송신
+
+            }
         }
         public int nume = 0;
         private void btn_SpeedCheck_Click(object sender, EventArgs e)
@@ -202,7 +209,7 @@ namespace Joystick_Interface_v1
                 // Instantiate the joystick
                 var joystick = new Joystick(directInput, joystickGuid); //조이스틱 객체 선언
 
-                //newform2.showTextBoxLine("Found Joystick/Gamepad with GUID: " + joystickGuid);
+              
 
                 //richTextBox_line.AppendText("Found Joystick/Gamepad with GUID: " + joystickGuid);
                 //richTextBox_line.AppendText("\n");
@@ -213,7 +220,7 @@ namespace Joystick_Interface_v1
 
                 foreach (var effectInfo in allEffects)
                 {
-                    //newform2.showTextBoxLine("Effect available " + effectInfo.Name);
+                    
 
                     //richTextBox_line.AppendText("Effect available " + effectInfo.Name);
                     //richTextBox_line.AppendText("\n");
@@ -266,7 +273,7 @@ namespace Joystick_Interface_v1
 
                     foreach (var state in states)
                     {
-                        //newform2.showTextBoxLine(state.ToString());
+                        
                         //richTextBox_line.AppendText(state.ToString());
                         //richTextBox_line.AppendText("\n");
                         //richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
@@ -276,8 +283,6 @@ namespace Joystick_Interface_v1
                         JoystickOffset joyType = state.Offset;
                         String strType = joyType.ToString();
 
-                        //Console.Write(strType);
-                        //Console.WriteLine(val);
 
 
                         int typeCorrect = 0;
@@ -358,7 +363,7 @@ namespace Joystick_Interface_v1
 
                             speedometer.Angle = speedAngle.ToString();
 
-                            //newform2.showTextBoxCompile(compileStr);
+                           
                             //richTextBox_compile.AppendText(compileStr);
                             //richTextBox_compile.AppendText("\n");
                             //richTextBox_compile.ScrollToCaret();//리치텍스트박스 자동 스크롤 
@@ -395,9 +400,7 @@ namespace Joystick_Interface_v1
                 joy.Start();
 
             }
-            else {
-                btn_joyStart.BackColor = Color.Firebrick;
-            }
+           
             tryNum++;
             
 

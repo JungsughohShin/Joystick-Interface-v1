@@ -10,8 +10,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 //폼과 폼간의 데이터 전송
 //https://dream-hacker.tistory.com/55
+//크로스 스레딩
+//https://misang.tistory.com/133
 
 
 namespace Joystick_Interface_v1
@@ -58,9 +61,10 @@ namespace Joystick_Interface_v1
             // If Joystick not found, throws an error
             if (joystickGuid == Guid.Empty)
             {
-                richTextBox_line.AppendText("No joystick/Gamepad found.");
-                richTextBox_line.AppendText("\n");
-                richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+                showRichTextBox("No joystick/Gamepad found.");
+                //richTextBox_line.AppendText("No joystick/Gamepad found.");
+                //richTextBox_line.AppendText("\n");
+                //richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
 
 
             }
@@ -71,25 +75,25 @@ namespace Joystick_Interface_v1
                 // Instantiate the joystick
                 var joystick = new Joystick(directInput, joystickGuid); //조이스틱 객체 선언
 
-               
 
-                richTextBox_line.AppendText("Found Joystick/Gamepad with GUID: " + joystickGuid);
-                richTextBox_line.AppendText("\n");
-                richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+                showRichTextBox("Found Joystick/Gamepad with GUID: " + joystickGuid);
+                //richTextBox_line.AppendText("Found Joystick/Gamepad with GUID: " + joystickGuid);
+                //richTextBox_line.AppendText("\n");
+                //richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
 
                 // Query all suported ForceFeedback effects
                 var allEffects = joystick.GetEffects();
 
                 foreach (var effectInfo in allEffects)
                 {
-                    
 
-                    richTextBox_line.AppendText("Effect available " + effectInfo.Name);
-                    richTextBox_line.AppendText("\n");
-                    richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+                    showRichTextBox("Effect available " + effectInfo.Name);
+                    //richTextBox_line.AppendText("Effect available " + effectInfo.Name);
+                    //richTextBox_line.AppendText("\n");
+                    //richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
                 }
                 // Set BufferSize in order to use buffered data.
-                joystick.Properties.BufferSize = 128;
+                joystick.Properties.BufferSize = 128; //조금 느리다 싶으면 조정해보세요~
 
 
                 //<3>값가져오기 시작 
@@ -135,10 +139,10 @@ namespace Joystick_Interface_v1
 
                     foreach (var state in states)
                     {
-                       
-                        richTextBox_line.AppendText(state.ToString());
-                        richTextBox_line.AppendText("\n");
-                        richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+                        showRichTextBox(state.ToString());
+                        //richTextBox_line.AppendText(state.ToString());
+                        //richTextBox_line.AppendText("\n");
+                        //richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
 
                         int val = state.Value;
                         //JoystickOffset offset = state.Offset;
@@ -214,30 +218,34 @@ namespace Joystick_Interface_v1
                         }
                         if (typeCorrect == 1)
                         {
-                            string compileStr = "Speed : " + left_Y.ToString() + " ";
-                            compileStr = compileStr + "Turn :  " + right_X.ToString() + " ";
-                            compileStr = compileStr + "UP : " + rightBtn_Up.ToString() + " ";
-                            compileStr = compileStr + "DOWN : " + rightBtn_Dn.ToString() + " ";
+                            String compileStr = null;
+                            //compileStr = "Speed : " + left_Y.ToString() + " ";
+                            //compileStr = compileStr + "Turn :  " + right_X.ToString() + " ";
+                            //compileStr = compileStr + "UP : " + rightBtn_Up.ToString() + " ";
+                            //compileStr = compileStr + "DOWN : " + rightBtn_Dn.ToString() + " ";
+
+                            compileStr =String.Format("[Speed : {0,5}] [Turn : {1,5}] [Up : {2,5}] [Down : {3,5}] ",left_Y.ToString(),right_X.ToString(), rightBtn_Up.ToString(),rightBtn_Dn.ToString());
 
                             if (left_Y > 30)
                             {
                                 left_Y = 30;
                             }
 
-                            int speedAngle = left_Y * 10;
+                            //int speedAngle = left_Y * 10;
 
                             //speedometer.Angle = speedAngle.ToString();
 
-                            
-                            richTextBox_compile.AppendText(compileStr);
-                            richTextBox_compile.AppendText("\n");
-                            richTextBox_compile.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+                            showRichTextBox_Compile(compileStr);
+                            //richTextBox_compile.AppendText(compileStr);
+                            //richTextBox_compile.AppendText("\n");
+                            //richTextBox_compile.ScrollToCaret();//리치텍스트박스 자동 스크롤 
                         }
                         else
                         {
-                            richTextBox_compile.AppendText("Can't Compile Data");
-                            richTextBox_compile.AppendText("\n");
-                            richTextBox_compile.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+                            showRichTextBox_Compile("Not Processed Data");
+                            //richTextBox_compile.AppendText("Can't Compile Data");
+                            //richTextBox_compile.AppendText("\n");
+                            //richTextBox_compile.ScrollToCaret();//리치텍스트박스 자동 스크롤 
 
                         }
 
@@ -255,28 +263,33 @@ namespace Joystick_Interface_v1
 
         private void btnJoyStart_Click(object sender, EventArgs e)
         {
+  
+           
+
             if (tryNum == 0)
             {
                 btnJoyStart.BackColor = Color.MediumSeaGreen;
                 btnJoyStop.BackColor = Color.Firebrick;
 
+                
                 joy2 = new Thread(getJoystick);
                 joy2.Name = "joyLogThread";
                 joy2.IsBackground = false;
                 joy2.Start();
 
             }
-            else
-            {
-                btnJoyStart.BackColor = Color.Firebrick;
-            }
+           
             tryNum++;
+            showRichTextBox("************[Text Box Opened]************");
+            showRichTextBox_Compile("************[Text Box Opened]************");
 
         }
 
 
         private void btnJoyStop_Click(object sender, EventArgs e)
         {
+
+           
             if (joy2 != null)
             {
                 btnJoyStart.BackColor = Color.Firebrick;
@@ -284,6 +297,8 @@ namespace Joystick_Interface_v1
                 joy2.Abort();
                 tryNum = 0;
             }
+            showRichTextBox("************[Text Box Closed]************");
+            showRichTextBox_Compile("************[Text Box Closed]************");
         }
 
         private void richTextBox_line_TextChanged(object sender, EventArgs e)
@@ -301,6 +316,54 @@ namespace Joystick_Interface_v1
             }
         }
 
+
+        private void showRichTextBox(string str) {
+            if (richTextBox_line.InvokeRequired)
+            {
+                richTextBox_line.Invoke(new MethodInvoker(delegate
+                {
+                    richTextBox_line.AppendText(str);
+                    richTextBox_line.AppendText("\n");
+                    richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+
+
+                }));
+
+            }
+            else {
+
+                richTextBox_line.AppendText(str);
+                richTextBox_line.AppendText("\n");
+                richTextBox_line.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+
+            }
+        }
+
+        private void showRichTextBox_Compile(string str)
+        {
+
+
+            if (richTextBox_compile.InvokeRequired)
+            {
+                richTextBox_compile.Invoke(new MethodInvoker(delegate
+                {
+                    richTextBox_compile.AppendText(str);
+                    richTextBox_compile.AppendText("\n");
+                    richTextBox_compile.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+
+                }));
+
+            }
+            else
+            {
+                richTextBox_compile.AppendText(str);
+                richTextBox_compile.AppendText("\n");
+                richTextBox_compile.ScrollToCaret();//리치텍스트박스 자동 스크롤 
+
+            }
+
+
+        }
 
     }
     

@@ -55,7 +55,7 @@
             // 
             this.btnJoyStart.Location = new System.Drawing.Point(12, 392);
             this.btnJoyStart.Name = "btnJoyStart";
-            this.btnJoyStart.Size = new System.Drawing.Size(75, 23);
+            this.btnJoyStart.Size = new System.Drawing.Size(80, 50);
             this.btnJoyStart.TabIndex = 2;
             this.btnJoyStart.Text = "Start";
             this.btnJoyStart.UseVisualStyleBackColor = true;
@@ -63,9 +63,9 @@
             // 
             // btnJoyStop
             // 
-            this.btnJoyStop.Location = new System.Drawing.Point(93, 392);
+            this.btnJoyStop.Location = new System.Drawing.Point(98, 392);
             this.btnJoyStop.Name = "btnJoyStop";
-            this.btnJoyStop.Size = new System.Drawing.Size(75, 23);
+            this.btnJoyStop.Size = new System.Drawing.Size(80, 50);
             this.btnJoyStop.TabIndex = 3;
             this.btnJoyStop.Text = "Stop";
             this.btnJoyStop.UseVisualStyleBackColor = true;
