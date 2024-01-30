@@ -33,6 +33,7 @@
             this.환경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_ControlCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_joyStart = new System.Windows.Forms.Button();
             this.btn_SpeedCheck = new System.Windows.Forms.Button();
             this.btn_SerialComCheck = new System.Windows.Forms.Button();
             this.textBox_SerialSend = new System.Windows.Forms.TextBox();
@@ -45,9 +46,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Dcnt = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.speedometer = new UserSpeedometer.UserControl1();
             this.label_status = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.speedometer = new UserSpeedometer.UserControl1();
+            this.btn_joyStop = new System.Windows.Forms.Button();
+            this.btn_findCom = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -84,6 +87,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.panel2.Controls.Add(this.btn_findCom);
+            this.panel2.Controls.Add(this.btn_joyStop);
+            this.panel2.Controls.Add(this.btn_joyStart);
             this.panel2.Controls.Add(this.btn_SpeedCheck);
             this.panel2.Controls.Add(this.btn_SerialComCheck);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -91,6 +97,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(73, 629);
             this.panel2.TabIndex = 0;
+            // 
+            // btn_joyStart
+            // 
+            this.btn_joyStart.BackColor = System.Drawing.Color.DarkGray;
+            this.btn_joyStart.Location = new System.Drawing.Point(8, 130);
+            this.btn_joyStart.Name = "btn_joyStart";
+            this.btn_joyStart.Size = new System.Drawing.Size(53, 44);
+            this.btn_joyStart.TabIndex = 15;
+            this.btn_joyStart.Text = "Joy   Start";
+            this.btn_joyStart.UseVisualStyleBackColor = false;
+            this.btn_joyStart.Click += new System.EventHandler(this.btn_Joystick_Click);
             // 
             // btn_SpeedCheck
             // 
@@ -237,16 +254,6 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // label_status
-            // 
-            this.label_status.AutoSize = true;
-            this.label_status.Location = new System.Drawing.Point(89, 470);
-            this.label_status.Name = "label_status";
-            this.label_status.Size = new System.Drawing.Size(40, 12);
-            this.label_status.TabIndex = 12;
-            this.label_status.Text = "Status";
-            this.label_status.Click += new System.EventHandler(this.label3_Click);
-            // 
             // speedometer
             // 
             this.speedometer.Angle = "0";
@@ -263,6 +270,38 @@
             this.speedometer.Size = new System.Drawing.Size(205, 205);
             this.speedometer.TabIndex = 13;
             this.speedometer.Load += new System.EventHandler(this.userControl11_Load);
+            // 
+            // label_status
+            // 
+            this.label_status.AutoSize = true;
+            this.label_status.Location = new System.Drawing.Point(89, 470);
+            this.label_status.Name = "label_status";
+            this.label_status.Size = new System.Drawing.Size(40, 12);
+            this.label_status.TabIndex = 12;
+            this.label_status.Text = "Status";
+            this.label_status.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // btn_joyStop
+            // 
+            this.btn_joyStop.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_joyStop.Location = new System.Drawing.Point(8, 189);
+            this.btn_joyStop.Name = "btn_joyStop";
+            this.btn_joyStop.Size = new System.Drawing.Size(53, 44);
+            this.btn_joyStop.TabIndex = 16;
+            this.btn_joyStop.Text = "Joy   Stop";
+            this.btn_joyStop.UseVisualStyleBackColor = false;
+            this.btn_joyStop.Click += new System.EventHandler(this.btn_joyStop_Click);
+            // 
+            // btn_findCom
+            // 
+            this.btn_findCom.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_findCom.Location = new System.Drawing.Point(8, 252);
+            this.btn_findCom.Name = "btn_findCom";
+            this.btn_findCom.Size = new System.Drawing.Size(53, 44);
+            this.btn_findCom.TabIndex = 17;
+            this.btn_findCom.Text = "Find COM";
+            this.btn_findCom.UseVisualStyleBackColor = false;
+            this.btn_findCom.Click += new System.EventHandler(this.btn_findCom_Click);
             // 
             // Form1
             // 
@@ -304,6 +343,9 @@
         private System.Windows.Forms.Button btn_SerialComCheck;
         private UserSpeedometer.UserControl1 speedometer;
         private System.Windows.Forms.Button btn_SpeedCheck;
+        private System.Windows.Forms.Button btn_joyStart;
+        private System.Windows.Forms.Button btn_joyStop;
+        private System.Windows.Forms.Button btn_findCom;
     }
 }
 
